@@ -22,9 +22,8 @@ if(exito){
      
     let monto=prompt("Escribe el monto solicitado")
     let cuotas=prompt("Escribe la cantidad de cuotas mensuales")
-    let interes=1.10
-    
-    let resultado=(monto / cuotas) * interes
+    let interes=cuotas * 1.60    
+    let resultado=(monto / cuotas) + interes
     let final=alert("Pagarías una suma mensual de $" + resultado)
     
 
