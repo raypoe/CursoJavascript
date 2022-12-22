@@ -1,35 +1,62 @@
-let edad="18";
+const productos = [
+    { nombre: "perros", precio: 800 },
+    { nombre: "gatos", precio: 900 },
+    { nombre: "peces", precio: 300 },
+];
 
-function ingreso(){
+let carrito = []
 
-    let ingresar=false;
-    let edadUsuario=prompt("Ingresa tu edad en números. Debés ser mayor de edad para utilizar nuestros servicios")
-    if (edadUsuario>=edad){
-        alert ("podés calcular tu préstamo.")
-        ingresar=true
-        
-    }else{
-        alert("Error. Debés ser mayor de edad.")
+let seleccion = prompt("Hola, desea comprar alimento  balanceado para mascotas? Escriba si o no")
+
+while(seleccion != "si" && seleccion != "no"){
+    alert("Por favor ingresa si o no")
+    seleccion = prompt("Hola, desea comprar algún alimento balanceado?")
+}
+if(seleccion == "si"){
+    alert ("Nuestros alimentos disponibles son:")
+    let todoslosProductos = productos.map((producto) => producto.nombre + "" + producto.precio + "$");
+    alert (todoslosProductos.join( " - " ))
+} else if (seleccion == "no"){
+    alert ("Gracias por visitar nuestro sitio")
+}
+
+while (seleccion != "no"){
+    let producto = prompt ("Agrega un producto a tu carrito")
+    let precio = 0
+
+    if (producto == "perros" || producto == "gatos" || producto == "peces"){
+        switch (producto) {
+            case "perros":
+            precio = 800;
+            break;
+            case "gatos":
+            precio = 900;
+            break;
+            case "peces":
+            precio = 300;
+            break;
+            default:
+                break;
+        }
+        let unidades = parseInt(prompt("Cuántas unidades desea llevar?"))
+        carrito.push({producto, unidades, precio})
+        console.log(carrito)
+    } else {
+        alert("No tenemos ese producto")
     }
-    return ingresar;
 
+    seleccion = prompt("Desea seguir comprando? Ingrese si o no")
 
-}
-//Accedemos a simular el prestamo
-let exito=ingreso(true);
+    while (seleccion == "no"){
+        alert ("Gracias por la compra")
+        carrito.forEach((carritoFinal) =>{
+            alert(`producto: ${carritoFinal.producto}, unidades: ${carritoFinal.unidades},
+            total a pagar: ${carritoFinal.unidades * carritoFinal.precio}`)
+        })
 
-if(exito){
-     
-    let monto=prompt("Escribe el monto solicitado")
-    let cuotas=prompt("Escribe la cantidad de cuotas mensuales")
-    let interes=cuotas * 1.60    
-    let resultado=(monto / cuotas) + interes
-    let final=alert("Pagarías una suma mensual de $" + resultado)
-    
-
-
+        break;
+    } 
 }
 
-
-
-console.log(ingreso);
+const total = carrito.reduce((acc, el) => acc + el.precio * el.unidades, 0)
+alert (`El total a pagar por su compra es: ${total}`)
