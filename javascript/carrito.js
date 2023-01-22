@@ -16,6 +16,18 @@ const pintarCarrito = () =>{
     })
 
     modalHeader.append(modalbutton);
+
+    
+    const modalbutton2 = document.createElement("button");
+    modalbutton2.innerHTML = "Finalizar compra";
+    modalbutton2.className = "modal-footer-button";
+    modalbutton2.addEventListener("click",() => {
+        location.href="./paginaPago.html"
+    })
+    modalContainer.append(modalbutton2);
+    
+
+
     
     
     carrito.forEach((product) =>{
@@ -30,7 +42,7 @@ const pintarCarrito = () =>{
     <p>Cantidad: ${product.cantidad}</p>
     <span class="sumar"> + </span>
     <p>Total: ${product.cantidad * product.precio}</p>
-    <span class="delete-product"> ❌ </span>    
+    <span class="delete-product"> ❌ </span>   
     `;
      
     modalContainer.append(carritoContent);
@@ -90,5 +102,7 @@ const pintarCarrito = () =>{
         cantidadCarrito.innerText = JSON.parse(localStorage.getItem("carritoLength")); 
         
     };
+
+    
 
     carritoCounter();

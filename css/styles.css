@@ -29,9 +29,11 @@ body {
 .card {
 display: flex;
 flex-direction: row;
-align-items: center;
-justify-content: space-around;
+align-items: center; 
+justify-content: space-between;
 margin: 20px;
+border-style: dotted;
+border-color:  rgb(2, 65, 2);
 
 }
 
@@ -105,8 +107,13 @@ margin: 20px;
 
 .sumar {
     cursor: pointer;
+    font-size: 30px;
+    
 }
 
 .restar {
     cursor: pointer;
+    font-size: 30px;
 }
+
+
