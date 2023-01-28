@@ -20,7 +20,7 @@ const pintarCarrito = () =>{
     
     const modalbutton2 = document.createElement("button");
     modalbutton2.innerHTML = "Finalizar compra";
-    modalbutton2.className = "modal-footer-button";
+    modalbutton2.className = "modal-finalizar-button";
     modalbutton2.addEventListener("click",() => {
         location.href="./paginaPago.html"
     })
